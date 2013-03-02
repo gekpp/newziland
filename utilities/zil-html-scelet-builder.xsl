@@ -59,11 +59,11 @@
 
 		<xsl:choose>
 			<xsl:when test="number($needJquery)=1">
-				<script src="{$root}/{$workspace}/js/jquery.js"></script>
-				<script src="{$root}/{$workspace}/galeria/galleria-1.2.9.min.js"></script>
+				<script src="{$workspace}/js/jquery.js"></script>
+				<script src="{$workspace}/galeria/galleria-1.2.9.min.js"></script>
 				<script>
 					$(document).ready(function (){
-					Galleria.loadTheme('{$root}/{$workspace}/themes/classic/galleria.classic.min.js');
+					Galleria.loadTheme("{$workspace}/themes/classic/galleria.classic.min.js");
 					Galleria.run('#galleria');
 					Galleria.configure({lightbox: true});
 					});
