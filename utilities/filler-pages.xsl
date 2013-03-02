@@ -34,7 +34,11 @@
       </div>
       <div class="right_column">
         <div class="wr_galery">
-          <img src="/workspace/uploads/images/galerytemplate.png"/>
+        	<div id="galleria">
+        		<xsl:for-each select="/data/gallery-items/entry">
+        			<img src="{$workspace}/{$imagefile/@path}/{$imagefile/filename}" />
+        		</xsl:for-each>
+        	</div>
         </div>
         <div class="right_column_text">
           <div id="galery_description">
