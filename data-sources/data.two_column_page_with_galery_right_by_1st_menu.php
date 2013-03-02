@@ -10,6 +10,7 @@
 		public $dsParamLIMIT = '20';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
+		public $dsParamPARAMOUTPUT = 'galery';
 		public $dsParamSORT = 'system:id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
@@ -20,8 +21,6 @@
 		public $dsParamINCLUDEDELEMENTS = array(
 				'human-name',
 				'title',
-				'galery: count',
-				'galery: items',
 				'galery: entries',
 				'description',
 				'left-column',
@@ -42,7 +41,7 @@
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-02-28T09:27:21+00:00'
+				'release-date' => '2013-03-02T22:27:48+00:00'
 			);
 		}
 

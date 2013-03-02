@@ -2,50 +2,46 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 
-	Class datasourcetwo_column_page_with_galery_right_by_2nd_menu extends Datasource{
+	Class datasourcepage_galery extends Datasource{
 
-		public $dsParamROOTELEMENT = 'two-column-page-with-galery-right-by-2nd-menu';
+		public $dsParamROOTELEMENT = 'page-galery';
 		public $dsParamORDER = 'asc';
 		public $dsParamPAGINATERESULTS = 'yes';
-		public $dsParamLIMIT = '20';
+		public $dsParamLIMIT = '1';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
-		public $dsParamPARAMOUTPUT = 'galery';
+		public $dsParamPARAMOUTPUT = 'system:id';
 		public $dsParamSORT = 'system:id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
 		public $dsParamFILTERS = array(
-				'74' => '{$ds-active-2nd-menu:zzzz}',
+				'id' => '{$ds-two-column-page-with-galery-right-by-2nd-menu:$ds-two-column-page-with-galery-right-by-1st-menu:zzzz}',
 		);
 
 		public $dsParamINCLUDEDELEMENTS = array(
-				'human-name',
-				'title',
-				'description',
-				'left-column',
-				'right-column'
+				'name'
 		);
 
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
 			parent::__construct($parent, $env, $process_params);
-			$this->_dependencies = array('$ds-active-2nd-menu');
+			$this->_dependencies = array('$ds-two-column-page-with-galery-right-by-2nd-menu', '$ds-two-column-page-with-galery-right-by-1st-menu');
 		}
 
 		public function about(){
 			return array(
-				'name' => 'two column page with galery right by 2nd menu',
+				'name' => 'page galery',
 				'author' => array(
 					'name' => 'Arkadiy Romanov',
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-02T22:28:13+00:00'
+				'release-date' => '2013-03-02T22:30:05+00:00'
 			);
 		}
 
 		public function getSource(){
-			return '11';
+			return '14';
 		}
 
 		public function allowEditorToParse(){
