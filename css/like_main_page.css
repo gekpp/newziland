@@ -1,0 +1,26 @@
+#banner_img{
+	margin-bottom: 18px;
+}
+
+.left_column_text{
+	padding-right: 40px;
+	color: #0099cb;
+}
+
+.right_column_text{
+	padding-right: 150px;
+}
+
+.contact_list_item {
+  margin-bottom: 7px;
+  font-family: Verdana;
+  font-size: 14px;
+}
+
+.contact_description_text {
+  color: #0099cb;
+}
+
+.contact_list_item>a:hover, .contact_list_item>a:visited, .contact_list_item>a:link  {
+  color: #0099cb;
+}

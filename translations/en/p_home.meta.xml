@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<meta>
+  <storage_format>xml</storage_format>
+  <type>page</type>
+  <name>P : Home</name>
+  <language>
+    <name>English</name>
+    <code>en</code>
+    <handle>english</handle>
+  </language>
+</meta>

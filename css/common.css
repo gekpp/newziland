@@ -1,0 +1,183 @@
+.delimiter{
+	background-image: url('/workspace/uploads/images/break.png');
+	height: 5px;
+	margin: 5px 5px 15px 0px;
+}
+.fl{
+	float: left;
+}
+
+.close_div{
+	clear: both;
+}
+
+.center_content {
+	width: 800px;
+	margin-left: auto; 
+	margin-right: auto; 
+//	background: #FF0000;
+}
+
+.left_column{
+	float: left; 
+	min-width: 320px;
+	max-width: 320px;
+}
+
+.right_column {
+	float: left; 
+	width: 480px;
+}
+
+.menu  {
+    font-family: Verdana;
+    font-size: 19px;
+}
+
+.bottom_menu{
+	font-size: 13px;
+	background-color: #0099cb;
+	padding: 0px 0px 4px 0px;
+}
+
+.selected_menu {
+	color: #0099cb;
+}
+
+.header_1st_line, .header_2nd_line{
+	color: #005696;
+}
+
+.header_1st_line {
+	font-family: Verdana;
+	font-size : 19px;
+}
+
+.header_2nd_line{
+	font-family: Verdana;
+	font-size: 22px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	height: 100%;
+}
+
+body {
+	font-family: Verdana
+/*
+	font: 12px/18px Verdana, Arial, Tahoma sans-serif;
+	height: 100%;
+*/
+}
+a {
+	color: blue;
+	outline: none;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+img {
+	border: none;
+}
+#main_content {
+	padding: 0 0 35px;
+}
+
+#header {
+	padding: 16px 0 20px 0;
+}
+
+
+
+/* Middle
+-----------------------------------------------------------------------------*/
+.wrapper {
+	min-width: 990px;
+	max-width: 1280px;
+	margin: 0 auto;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+.middle {
+	width: 100%;
+	height: 1%;
+	position: relative;
+}
+.middle:after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
+.container {
+	width: 100%;
+	float: left;
+/*	overflow: hidden; */
+}
+.content {
+	padding: 0 0 0 215px;
+}
+
+/* Sidebar Left
+-----------------------------------------------------------------------------*/
+.sideLeft {
+	float: left;
+	width: 190px;
+	margin-left: -100%;
+	position: relative;
+	padding-left: 16px;
+}
+
+.wr_left_menu, .wr_2nd_menu {
+	margin-top: -8px;
+}
+
+.menu li{
+	list-style-type: none;
+}
+
+.menu a:visited, .menu a:link, .menu a:hover{
+	color: #000;
+	text-decoration: none;
+}
+
+.bottom_menu {
+	background-color: #0099cb;
+	padding: 0px 0px 4px 0px;
+}
+
+.bottom_menu li span {
+	font-size: 13px;
+	margin-left: 12px;
+	color: #FFF;
+}
+
+
+.bottom_menu .selected_menu{
+	color :#005696 ;
+}
+
+.bottom_menu li:first-child {
+}
+
+.bottom_menu_item{
+	float: left;
+	text-align: center;
+	height: 16px;
+}
+
+.left_column_text, .right_column_text {
+	font-family: Verdana;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+
+

@@ -1,0 +1,160 @@
+* {
+margin: 0; padding: 0;
+}
+
+#header{
+	background-color: #fff;
+	margin-bottom: 24px;
+}
+
+#home_link>div {
+	padding-top: 16px;
+}
+
+#header_left_column, #header_right_column {
+	margin-top: 16px;
+	color: #005696;
+	font-size: 18px;
+	font-family: Sans;
+}
+
+#header_left_column #header_left_2nd_line {
+	font-weight: normal;
+	font-size: 22px;
+}
+
+#header_right_line{
+	font-size: 22px;
+}
+
+#header_right_column>div {
+	padding-left: 15px;
+}
+
+#header_left_column span {
+	float: right;
+}
+
+#header_right_logo {
+	float: right;
+}
+
+#main {
+	margin-bottom: 35px;
+}
+
+.delimiter{
+	background-image: url('/workspace/uploads/images/break.png');
+	height: 5px;
+	margin: 5px 5px 15px 0px;
+}
+.fl{
+	float: left;
+}
+
+.close_div{
+	clear: both;
+}
+
+#main_wrapper {
+	min-width: 990px;
+	max-width: 990px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.wr_left_menu li, .wr_bottom_menu li, .wr_2nd_menu li {
+	list-style-type: none;
+}
+
+.wr_bottom_menu {
+	background-color: #0099cb;
+	padding: 3px 0px;
+}
+
+.wr_bottom_menu li span {
+	font-size: 13px;
+	margin-left: 15px;
+	color: #FFF;
+}
+
+.wr_bottom_menu .selected_menu{
+	color :#005696 ;
+}
+
+.wr_bottom_menu li:first-child {
+	margin-left: 40px;
+}
+
+.bottom_menu_item{
+	float: left;
+}
+
+.wr_left_menu{
+	width: 190px;
+}
+
+.wr_left_menu>div {
+	padding: 0px 0 0 16px;
+}
+
+.wr_bottom_menu, .wr_left_menu, .wr_2nd_menu {
+    font-family: Sans;
+    font-size: 18px;
+}
+
+.wr_left_menu a:visited, .wr_left_menu a:link, .wr_left_menu a:hover,
+.wr_bottom_menu a:visited, .wr_bottom_menu a:link, .wr_bottom_menu a:hover,
+.wr_2nd_menu a:visited, .wr_2nd_menu a:link, .wr_2nd_menu a:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+
+
+.wr_content_info, .wr_bottom_menu {
+	min-width: 800px;
+}
+
+
+.wr_left_column { 
+	min-width: 320px;
+	max-width: 320px;
+	width: 50%;
+}
+
+.wr_left_column>div {
+	padding: 0px 5px 0px 0px;
+}
+
+.left_column_text, .right_column_text {
+	font-family: Sans;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.right_column_text {
+	font-family: Sans;
+	line-height: 1.5;	
+}
+
+.right_column_text #galery_description {
+	margin-left: 90px;
+	margin-right: 90px;
+	margin-top: 25px;
+	color: #0099cb;
+}
+
+.wr_right_column {
+	width: 50%;
+	max-width: 400px;
+	min-width: 480px;
+}
+
+.selected_menu {
+	color: #0099cb;
+}
+
+.footer_menu {
+	margin-bottom: 20px;
+}
