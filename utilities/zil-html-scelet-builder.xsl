@@ -67,7 +67,7 @@
 					<div class="right_column">
 						<div style="float: left">
 							<div class="header_1st_line"><xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text></div>
-							<div class="header_2nd_line" style="padding-left:15px" >ZIL PINNINSULA</div>
+							
 						</div>
 						<img style="float: right; padding-top: 15px" src="/workspace/uploads/images/zil-logo.png"/>
 					</div>
