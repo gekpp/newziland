@@ -43,6 +43,10 @@
 				<link rel="stylesheet" href="{$workspace}/css/like_main_page.css"
 					type="text/css" media="screen, projection" />
 			</xsl:when>
+			<xsl:when
+				test="number(/data/params/ds-scheme-page/item[1])">
+				<link rel="stylesheet" href="{$workspace}/css/scheme_page.css" tyle="text/css" media="screen, projection" />
+			</xsl:when>				
 		</xsl:choose>
 	</xsl:template>
 

@@ -45,6 +45,9 @@
         <xsl:when test="number(/data/contact-page-by-1st-menu/entry/@id)">
           <xsl:apply-templates name="fill-contact-page" select="/data/contact-page-by-1st-menu"/>
         </xsl:when>
+        <xsl:when test="number(/data/scheme-page/entry/@id)">
+			<xsl:apply-templates name="fill-scheme-page" select="/data/scheme-page"/>
+        </xsl:when>
       </xsl:choose>
     </xsl:otherwise>
   </xsl:choose>
