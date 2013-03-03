@@ -57,7 +57,7 @@
 	<xsl:template name="write-scripts">
 		<xsl:variable name="needJquery">
 			<xsl:choose>
-				<xsl:when test="number(/data/page-galery/entry/@id)">
+				<xsl:when test="number(/data/page-galery/entry/@id) or number(/data/scheme-item/entry/@id)">
 					1
 				</xsl:when>
 				<xsl:otherwise>
@@ -70,6 +70,7 @@
 			<xsl:when test="number($needJquery)=1">
 				<script src="{$workspace}/js/jquery.js"></script>
 				<script src="{$workspace}/galleria/galleria-1.2.9.min.js"></script>
+				<script src="{$workspace}/js/scheme.js"/>
 				<script>
 					$(document).ready(function (){
 					//Galleria.

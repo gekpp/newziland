@@ -20,7 +20,8 @@
 
 		public $dsParamINCLUDEDELEMENTS = array(
 				'title',
-				'right-column'
+				'right-column',
+				'scheme-picture'
 		);
 
 
@@ -37,7 +38,7 @@
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-03T20:57:48+00:00'
+				'release-date' => '2013-03-03T21:15:53+00:00'
 			);
 		}
 

@@ -1,0 +1,46 @@
+#wr_scheme_img {
+	position: relative;
+}
+
+._wr_scheme_item_title{
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+
+.scheme_item_description {
+	position: absolute;
+	left:0px;
+	top: 0px;
+	display: none;
+}
+
+.scheme_pushpin {
+	position: absolute;
+	cursor: pointer;
+}
+
+.scheme_item_pushpin{
+	float: left;
+	cursor: pointer;
+}
+
+.scheme_item_title {
+	float: left;
+	margin: 7px 0px 0px 47px;
+	cursor: pointer;
+}
+
+.scheme_left_column {
+	width: 412px;
+	min-width: 412px;
+	margin-top: 7px;
+	float: left;
+}
+
+.scheme_right_column {
+	width: 380px;
+	min-width: 380px;
+	margin-top: 7px;
+	float:left;
+	position: relative;
+}
