@@ -13,6 +13,7 @@
 				<xsl:call-template name="write-keywords-and-desc" />
 				<xsl:call-template name="write-styles" />
 				<xsl:call-template name="write-scripts" />
+				<xsl:call-template name="write-print-styles" />
 			</head>
 			<body>
 				<xsl:call-template name="write-body" />
@@ -45,6 +46,10 @@
 		</xsl:choose>
 	</xsl:template>
 
+        <xsl:template name="write-print-styles">
+          <link rel="stylesheet" type="text/css" media="print" href="{$workspace}/css/print.css" />
+        </xsl:template>
+
 	<xsl:template name="write-scripts">
 		<xsl:variable name="needJquery">
 			<xsl:choose>
@@ -63,12 +68,12 @@
 				<script src="{$workspace}/galleria/galleria-1.2.9.min.js"></script>
 				<script>
 					$(document).ready(function (){
-					Galleria.
+					//Galleria.
 					Galleria.loadTheme("<xsl:value-of select="$workspace"/>/galleria/themes/classic/galleria.classic.min.js");
-					Galleria.DEBUG=false;
+					//Galleria.DEBUG=false;
+					Galleria.configure({lightbox: true, autoplay: 5000, imageCrop: 'height'});
 					Galleria.run('#galleria');
-					Galleria.configure({lightbox: true});
-					Galleria.configure('debug',false);
+					//Galleria.configure('debug',false);
 					});
 				</script>
 			</xsl:when>

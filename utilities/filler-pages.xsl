@@ -35,8 +35,9 @@
       <div class="right_column">
         <div class="wr_galery">
         	<div id="galleria">
-        		<xsl:for-each select="/data/gallery-items/entry">
-        			<img src="{$workspace}/{$imagefile/@path}/{$imagefile/filename}" />
+        		<xsl:for-each select="/data/gallery-items/entry/imagefile">
+        			<xsl:variable name="item" select="."/>
+        			<img src="{$workspace}/{$item/@path}/{$item/filename}" />
         		</xsl:for-each>
         	</div>
         </div>
@@ -65,12 +66,12 @@
           <div class="contact_list_item"><xsl:value-of select="entry/how-to-find"/></div>
           <div class="contact_list_item"><xsl:value-of select="entry/email"/></div>
           <div class="contact_list_item">
-            <a href="#">
+            <a href="javascript:window.print(); void 0;">
               <xsl:value-of select="/data/ml-strings/entry/value[@handle-en='print-the-map']"/>
             </a>
           </div>
           <div class="contact_list_item">
-            <a href="#">
+            <a href="http://maps.yandex.ru/?um=G5NwOK95Oc7c3yzcxk94HQE3YRPnhDrl&amp;l=map" target="_blank">
               <xsl:value-of select="/data/ml-strings/entry/value[@handle-en='show-on-yandex-maps']"/>
             </a>
           </div>

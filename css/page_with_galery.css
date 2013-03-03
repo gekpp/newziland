@@ -17,3 +17,17 @@
 	float: left; 
 	width: 480px;
 }
+
+.galleria-container{ 
+	background:#CCC; 
+}
+
+#galleria{
+        width: 479px;
+        height: 358px; 
+        background: #000;
+}
+
+.galleria-counter {
+	color : 000;
+}
