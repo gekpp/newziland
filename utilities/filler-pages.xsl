@@ -155,7 +155,7 @@
       <xsl:when test="number(./entry/@id)">
         <div class="left_column">
           <span id="cur_year">
-            2013 &nbsp;
+            2013 &amp;nbsp;
             <xsl:value-of select="/data/ml-strings/entry[name='год']/value" />
           </span>
           <div class="delimiter"></div>
