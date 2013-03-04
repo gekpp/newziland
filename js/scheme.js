@@ -14,8 +14,8 @@ function pinclick(no) {
 					$(this).addClass("non_active_pin");
 				}
 			});
-	$(".scheme_pushpin.non_active_pin").fadeTo("slow",0.6);
-	$(".wr_scheme_item_title.non_active_pin").fadeTo("slow",0.3);
+	$(".scheme_pushpin.non_active_pin").fadeTo("slow",0.8);
+	$(".wr_scheme_item_title.non_active_pin").fadeTo("slow",0.6);
 	$("#scheme_entire_page_text").css("display","none");
 	$(".scheme_item_description.non_active_pin").css("opacity",0.0);
 	$(".scheme_pushpin.active_pin, .wr_scheme_item_title.active_pin").fadeTo("slow",1.0);
