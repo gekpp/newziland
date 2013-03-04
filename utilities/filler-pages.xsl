@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
   <!-- Заполняем домашную страницу -->
   <xsl:template name="fill-main-page">
     <xsl:variable name="page" select="/data/home-page[1]/entry" />
@@ -133,7 +133,8 @@
     <div class="scheme_right_column">
       <div class="right_column_text">
         <div id="scheme_entire_page_text">
-          <xsl:value-of select="entry/right-column" />./@id
+          <xsl:value-of select="entry/right-column" />
+          ./@id
         </div>
       </div>
       <xsl:for-each select="/data/scheme-item/entry">
@@ -155,12 +156,13 @@
       <xsl:when test="number(./entry/@id)">
         <div class="left_column">
           <span id="cur_year">
-            2013 <xsl:value-of select="/data/ml-strings/entry[name='год']/value" />
+            2013
+            <xsl:value-of select="/data/ml-strings/entry[name='год']/value" />
           </span>
           <div class="delimiter"></div>
           <div class="left_column_text">
             <xsl:for-each select="./entry/news-items/item">
-              <xsl:variable name="item-id" select="./@id"/>
+              <xsl:variable name="item-id" select="./@id" />
               <div class="wr_news_item">
                 <xsl:variable name="item"
                   select="/data/news-items/entry[@id=$item-id]" />
@@ -179,19 +181,29 @@
           </div>
         </div>
         <div class="right_column">
-          <div class="wr_galery">
-            <div id="galleria">
-              <xsl:for-each select="/data/gallery-items/entry/imagefile">
-                <xsl:variable name="item" select="." />
-                <img src="{$workspace}/{$item/@path}/{$item/filename}" />
-              </xsl:for-each>
+          <xsl:for-each select="./entry/news-items/item">
+            <xsl:variable name="item-id" select="./@id" />
+            <div class="wr_news_item">
+              <xsl:variable name="news-item"
+                select="/data/news-items/entry[@id=$item-id]" />
+              <xsl:variable name="galery"
+                select="/data/page-galery/entry[@id=$news-item/galery/item/@id]" />
+              <div class="wr_galery">
+                <div id="galleria">
+                  <xsl:for-each select="/data/gallery-items/entry/imagefile">
+                    <xsl:variable name="item" select="." />
+                    <img src="{$workspace}/{$item/@path}/{$item/filename}" />
+                  </xsl:for-each>
+                </div>
+              </div>
+              <div class="right_column_text">
+                <div id="galery_description">
+                  <xsl:value-of select="$news-item/full-text" />
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="right_column_text">
-            <div id="galery_description">
-              <xsl:value-of select="./entry/right-column" />
-            </div>
-          </div>
+          </xsl:for-each>
+
         </div>
         <div style="clear:both"></div>
       </xsl:when>
