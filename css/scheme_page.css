@@ -26,6 +26,7 @@
 
 .scheme_item_title {
 	float: left;
+	color: #0099cb;
 	margin: 7px 0px 0px 47px;
 	cursor: pointer;
 }
@@ -43,4 +44,11 @@
 	margin-top: 7px;
 	float:left;
 	position: relative;
+}
+
+.show_all_pins_btn {
+	color: #0099cb;
+	cursor: pointer;
+	display: block;
+	z-index: 100;
 }

@@ -55,23 +55,12 @@
         </xsl:template>
 
 	<xsl:template name="write-scripts">
-		<xsl:variable name="needJquery">
 			<xsl:choose>
-				<xsl:when test="number(/data/page-galery/entry/@id) or number(/data/scheme-item/entry/@id)">
-					1
-				</xsl:when>
-				<xsl:otherwise>
-					0
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
 
-		<xsl:choose>
-			<xsl:when test="number($needJquery)=1">
-				<script src="{$workspace}/js/jquery.js"></script>
-				<script src="{$workspace}/galleria/galleria-1.2.9.min.js"></script>
-				<script src="{$workspace}/js/scheme.js"/>
-				<script>
+				<xsl:when test="number(/data/page-galery/entry/@id)">
+        				<script src="{$workspace}/js/jquery.js"/>
+					<script src="{$workspace}/galleria/galleria-1.2.9.min.js"/>
+				  <script>
 					$(document).ready(function (){
 					//Galleria.
 					Galleria.loadTheme("<xsl:value-of select="$workspace"/>/galleria/themes/classic/galleria.classic.min.js");
@@ -80,9 +69,14 @@
 					Galleria.run('#galleria');
 					//Galleria.configure('debug',false);
 					});
-				</script>
-			</xsl:when>
-		</xsl:choose>
+				  </script>
+				</xsl:when>
+				<xsl:when test="number(/data/scheme-item/entry[1]/@id)">
+        				<script src="{$workspace}/js/jquery.js"/>
+        				<script src="{$workspace}/js/scheme.js"/>
+				</xsl:when>
+
+			</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="write-body">

@@ -93,15 +93,15 @@
   <div id="wr_scheme_img">
     <img id="scheme_img" src="{$workspace}/{./entry/scheme-picture/@path}/{./entry/scheme-picture/filename}"/>
     <xsl:for-each select="/data/scheme-item/entry">
-      <img src="{$workspace}/{./push-pin-image/@path}/{./push-pin-image/filename}" id="scheme_pushpin_{position()}" class="scheme_pushpin" style="left: {./x}px; top: {./y}px"/>
+      <img src="{$workspace}/{./push-pin-image/@path}/{./push-pin-image/filename}" id="scheme_pushpin_{position()}" class="scheme_pushpin" style="left: {./x}px; top: {./y}px" onclick="pinclick({position()})"/>
     </xsl:for-each>
   </div>
   <div class="scheme_left_column">
     <div class="left_column_text">
       <xsl:for-each select="/data/scheme-item/entry">
         <div class="wr_scheme_item_title" id="wr_scheme_item_title_{position()}">
-          <img src="{$workspace}/{./push-pin-image/@path}/{./push-pin-image/filename}" class="scheme_item_pushpin"/>
-          <div class="scheme_item_title"><xsl:value-of select="./title"/></div>
+          <img src="{$workspace}/{./push-pin-image/@path}/{./push-pin-image/filename}" class="scheme_item_pushpin" onclick="pinclick({position()})"/>
+          <div class="scheme_item_title" onclick="pinclick({position()})"><xsl:value-of select="./title" /></div>
           <div style="clear:both"/>
         </div>
       </xsl:for-each>
@@ -112,8 +112,9 @@
       <div id="scheme_entire_page_text"><xsl:value-of select="entry/right-column"/></div>
     </div>
       <xsl:for-each select="/data/scheme-item/entry">
-        <div class="right_column_text scheme_item_description"  id="scheme_item_description{position()}">       
-          <xsl:value-of select="./content"/>
+        <div class="right_column_text scheme_item_description"  id="scheme_item_description_{position()}">       
+          <xsl:copy-of select="./content[@mode='normal']"/>
+          <div onclick="showAllPins()" class="show_all_pins_btn"><xsl:copy-of select="/data/ml-strings/entry[name='показать все пины']/value" /></div>
         </div>
       </xsl:for-each>
   </div>
