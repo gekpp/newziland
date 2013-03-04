@@ -133,7 +133,7 @@
     <div class="scheme_right_column">
       <div class="right_column_text">
         <div id="scheme_entire_page_text">
-          <xsl:value-of select="entry/right-column" />
+          <xsl:value-of select="entry/right-column" />./@id
         </div>
       </div>
       <xsl:for-each select="/data/scheme-item/entry">
@@ -155,20 +155,20 @@
       <xsl:when test="number(./entry/@id)">
         <div class="left_column">
           <span id="cur_year">
-            2013 &nbsp;
-            <xsl:value-of select="/data/ml-strings/entry[name='год']/value" />
+            2013 <xsl:value-of select="/data/ml-strings/entry[name='год']/value" />
           </span>
           <div class="delimiter"></div>
           <div class="left_column_text">
             <xsl:for-each select="./entry/news-items/item">
+              <xsl:variable name="item-id" select="./@id"/>
               <div class="wr_news_item">
                 <xsl:variable name="item"
-                  select="/data/news-items/entry[@id={$./@id}]" />
+                  select="/data/news-items/entry[@id=$item-id]" />
                 <div class="news_date">
                   <xsl:value-of select="$item/date" />
                 </div>
                 <div class="news_short_desc">
-                  <xsl:value-of select="$item/schort-text" />
+                  <xsl:value-of select="$item/short-text" />
                 </div>
                 <div class="more_button">
                   <xsl:value-of

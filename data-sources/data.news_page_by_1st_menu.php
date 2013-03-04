@@ -2,46 +2,48 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 
-	Class datasourcepage_galery extends Datasource{
+	Class datasourcenews_page_by_1st_menu extends Datasource{
 
-		public $dsParamROOTELEMENT = 'page-galery';
-		public $dsParamORDER = 'asc';
+		public $dsParamROOTELEMENT = 'news-page-by-1st-menu';
+		public $dsParamORDER = 'desc';
 		public $dsParamPAGINATERESULTS = 'yes';
-		public $dsParamLIMIT = '1';
+		public $dsParamLIMIT = '20';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
-		public $dsParamPARAMOUTPUT = 'system:id';
+		public $dsParamPARAMOUTPUT = 'news-items';
 		public $dsParamSORT = 'system:id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
 		public $dsParamFILTERS = array(
-				'id' => '{$ds-two-column-page-with-galery-right-by-2nd-menu:$ds-two-column-page-with-galery-right-by-1st-menu:$ds-news-items:zzzz}',
+				'102' => '{$ds-active-1st-menu:zzzz}',
 		);
 
 		public $dsParamINCLUDEDELEMENTS = array(
-				'name'
+				'title',
+				'description',
+				'news-items'
 		);
 
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
 			parent::__construct($parent, $env, $process_params);
-			$this->_dependencies = array('$ds-two-column-page-with-galery-right-by-2nd-menu', '$ds-two-column-page-with-galery-right-by-1st-menu', '$ds-news-items');
+			$this->_dependencies = array('$ds-active-1st-menu');
 		}
 
 		public function about(){
 			return array(
-				'name' => 'page galery',
+				'name' => 'news page by 1st menu',
 				'author' => array(
 					'name' => 'Arkadiy Romanov',
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-04T21:47:11+00:00'
+				'release-date' => '2013-03-04T22:06:17+00:00'
 			);
 		}
 
 		public function getSource(){
-			return '14';
+			return '20';
 		}
 
 		public function allowEditorToParse(){
