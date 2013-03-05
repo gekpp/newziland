@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="date-time.xsl"/>
+  <xsl:import href="date-time.xsl" />
 
   <!-- Заполняем домашную страницу -->
   <xsl:template name="fill-main-page">
@@ -169,9 +169,9 @@
                   select="/data/news-items/entry[@id=$item-id]" />
                 <div class="news_date">
                   <xsl:call-template name="format-date">
-                    <xsl:with-param name="date" select="$item/date"/>
-                    <xsl:with-param name="format" select="'d.n.Y'"/>
-                  </xsl:call-template> 
+                    <xsl:with-param name="date" select="$item/date" />
+                    <xsl:with-param name="format" select="'d.n.Y'" />
+                  </xsl:call-template>
                 </div>
                 <div class="news_short_desc">
                   <xsl:value-of select="$item/short-text" />
@@ -187,22 +187,36 @@
         <div class="right_column">
           <xsl:for-each select="./entry/news-items/item">
             <xsl:variable name="item-id" select="./@id" />
-            <xsl:variable name="display" >
-              <xsl:choose><xsl:when test="position()>1">none</xsl:when>
-                <xsl:otherwise>block</xsl:otherwise>
+            <xsl:variable name="display">
+              <xsl:choose>
+                <xsl:when test="position()>1">
+                  none
+                </xsl:when>
+                <xsl:otherwise>
+                  block
+                </xsl:otherwise>
               </xsl:choose>
             </xsl:variable>
-            <xsl:variable name="wrapper-class" >
-              <xsl:choose><xsl:when test="position()>1">hidenNewsItem</xsl:when>
-                <xsl:otherwise>shownNewsItem</xsl:otherwise>
+            <xsl:variable name="wrapper-class">
+              <xsl:choose>
+                <xsl:when test="position()>1">
+                  hidenNewsItem
+                </xsl:when>
+                <xsl:otherwise>
+                  shownNewsItem
+                </xsl:otherwise>
               </xsl:choose>
             </xsl:variable>
-            <xsl:variable name="gallery-class" >
-              <xsl:choose><xsl:when test="position()>1"></xsl:when>
-                <xsl:otherwise>galleria</xsl:otherwise>
+            <xsl:variable name="gallery-class">
+              <xsl:choose>
+                <xsl:when test="position()>1"></xsl:when>
+                <xsl:otherwise>
+                  galleria
+                </xsl:otherwise>
               </xsl:choose>
             </xsl:variable>
-            <div class="wr_news_full {$wrapper-class}" id="wr_news_item_{position()}" style="display:{$display}">
+            <div class="wr_news_full {$wrapper-class}" id="wr_news_item_{position()}"
+              style="display:{$display}">
               <xsl:variable name="news-item"
                 select="/data/news-items/entry[@id=$item-id]" />
               <xsl:variable name="galery"
@@ -231,6 +245,33 @@
   <!-- Заполняем страницу Новости -->
 
   <!-- Заполнаяем страницу Видео -->
+  <xsl:template name="fill-video-page" match="video-page-by-1st-menu">
+    <xsl:variable name="item-id" select="./@id" />
+    <xsl:variable name="video-item" select="/data/video-for-video-page/entry[@id=$item-id]"/>
+    <xsl:variable name="path-to-video">
+        <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/flv-file/@path"/>/<xsl:value-of select="$video-item/flv-file/filename"/>        
+    </xsl:variable>
+    <xsl:variable name="path-to-preview">
+        <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/preview/@path"/>/<xsl:value-of select="$video-item/preview/filename"/>        
+    </xsl:variable>
+    
+    <div id="video">
+      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+        codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+        width="640" height="360" id="fp" align="middle">
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="movie"
+          value="{$workspace}/video/fp.swf?video={$path-to-video}&image={$path-to-preview}&title=Мое видео" />
+        <param name="quality" value="high" />
+        <param name="bgcolor" value="#ffffff" />
+        <embed
+          src="{$workspace}/video/fp.swf?video={$path-to-video}&image={$path-to-preview}&title=Мое виде"
+          quality="high" bgcolor="#ffffff" width="640" height="360"
+          name="fp" align="middle" allowScriptAccess="sameDomain"
+          type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+      </object>
+    </div>
+  </xsl:template>
   <!-- Заполнаяем страницу Видео -->
 
 </xsl:stylesheet>
