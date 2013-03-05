@@ -2,6 +2,8 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:import href="date-time.xsl"/>
+
   <!-- Заполняем домашную страницу -->
   <xsl:template name="fill-main-page">
     <xsl:variable name="page" select="/data/home-page[1]/entry" />
@@ -37,7 +39,7 @@
         </div>
         <div class="right_column">
           <div class="wr_galery">
-            <div id="galleria">
+            <div class="galleria">
               <xsl:for-each select="/data/gallery-items/entry/imagefile">
                 <xsl:variable name="item" select="." />
                 <img src="{$workspace}/{$item/@path}/{$item/filename}" />
@@ -134,7 +136,6 @@
       <div class="right_column_text">
         <div id="scheme_entire_page_text">
           <xsl:value-of select="entry/right-column" />
-          ./@id
         </div>
       </div>
       <xsl:for-each select="/data/scheme-item/entry">
@@ -167,12 +168,15 @@
                 <xsl:variable name="item"
                   select="/data/news-items/entry[@id=$item-id]" />
                 <div class="news_date">
-                  <xsl:value-of select="$item/date" />
+                  <xsl:call-template name="format-date">
+                    <xsl:with-param name="date" select="$item/date"/>
+                    <xsl:with-param name="format" select="'d.n.Y'"/>
+                  </xsl:call-template> 
                 </div>
                 <div class="news_short_desc">
                   <xsl:value-of select="$item/short-text" />
                 </div>
-                <div class="more_button">
+                <div class="more_button" onclick="selectNews('_{position()}');">
                   <xsl:value-of
                     select="/data/ml-strings/entry[name='подробнее']/value" />
                 </div>
@@ -183,13 +187,28 @@
         <div class="right_column">
           <xsl:for-each select="./entry/news-items/item">
             <xsl:variable name="item-id" select="./@id" />
-            <div class="wr_news_item">
+            <xsl:variable name="display" >
+              <xsl:choose><xsl:when test="position()>1">none</xsl:when>
+                <xsl:otherwise>block</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="wrapper-class" >
+              <xsl:choose><xsl:when test="position()>1">hidenNewsItem</xsl:when>
+                <xsl:otherwise>shownNewsItem</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="gallery-class" >
+              <xsl:choose><xsl:when test="position()>1"></xsl:when>
+                <xsl:otherwise>galleria</xsl:otherwise>
+              </xsl:choose>
+            </xsl:variable>
+            <div class="wr_news_full {$wrapper-class}" id="wr_news_item_{position()}" style="display:{$display}">
               <xsl:variable name="news-item"
                 select="/data/news-items/entry[@id=$item-id]" />
               <xsl:variable name="galery"
                 select="/data/page-galery/entry[@id=$news-item/galery/item/@id]" />
               <div class="wr_galery">
-                <div id="galleria">
+                <div class="{$gallery-class}">
                   <xsl:for-each select="/data/gallery-items/entry/imagefile">
                     <xsl:variable name="item" select="." />
                     <img src="{$workspace}/{$item/@path}/{$item/filename}" />
@@ -197,7 +216,7 @@
                 </div>
               </div>
               <div class="right_column_text">
-                <div id="galery_description">
+                <div class="news_full_text">
                   <xsl:value-of select="$news-item/full-text" />
                 </div>
               </div>

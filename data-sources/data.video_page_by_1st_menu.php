@@ -2,49 +2,49 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 
-	Class datasourcenews_items extends Datasource{
+	Class datasourcevideo_page_by_1st_menu extends Datasource{
 
-		public $dsParamROOTELEMENT = 'news-items';
+		public $dsParamROOTELEMENT = 'video-page-by-1st-menu';
 		public $dsParamORDER = 'desc';
 		public $dsParamPAGINATERESULTS = 'yes';
-		public $dsParamLIMIT = '10';
+		public $dsParamLIMIT = '20';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
-		public $dsParamPARAMOUTPUT = 'galery';
-		public $dsParamSORT = 'date';
+		public $dsParamPARAMOUTPUT = 'video';
+		public $dsParamSORT = 'system:id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
 		public $dsParamFILTERS = array(
-				'id' => '{$ds-news-page-by-1st-menu:zzzz}',
+				'106' => '{$ds-active-1st-menu:zzzzz}',
 		);
 
 		public $dsParamINCLUDEDELEMENTS = array(
-				'date',
-				'short-text',
-				'full-text',
-				'galery'
+				'title',
+				'description',
+				'video',
+				'content-text'
 		);
 
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
 			parent::__construct($parent, $env, $process_params);
-			$this->_dependencies = array('$ds-news-page-by-1st-menu');
+			$this->_dependencies = array('$ds-active-1st-menu');
 		}
 
 		public function about(){
 			return array(
-				'name' => 'news items',
+				'name' => 'video page by 1st menu',
 				'author' => array(
 					'name' => 'Arkadiy Romanov',
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-04T23:08:35+00:00'
+				'release-date' => '2013-03-05T21:52:57+00:00'
 			);
 		}
 
 		public function getSource(){
-			return '19';
+			return '21';
 		}
 
 		public function allowEditorToParse(){

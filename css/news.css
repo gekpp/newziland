@@ -1,0 +1,17 @@
+.wr_news_item{
+	margin-bottom: 20px;
+}
+
+.more_button{
+	cursor: pointer;
+	color: #0099cb;
+}
+
+.news_full_text {
+	margin-top: 18px;
+}
+
+#cur_year {
+	color : #0099cb;
+	font-size: 20px;
+}

@@ -179,4 +179,12 @@ img {
 	line-height: 1.5;
 }
 
+.ruen_icon {
+	float: right;
+	margin-top: 20px;
+	margin-right: 7px;
+}
 
+.ruen_icon img {
+	width: 25px;
+}

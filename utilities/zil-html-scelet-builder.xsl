@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:import href="string-utils.xsl"/>
 	<xsl:import href="content-filler.xsl" />
 
 	<xsl:template name="write-html-and-children">
@@ -48,6 +49,9 @@
 				<link rel="stylesheet" href="{$workspace}/css/scheme_page.css" tyle="text/css" media="screen, projection" />
 			</xsl:when>				
 		</xsl:choose>
+            <xsl:choose><xsl:when test="number(/data/news-page-by-1st-menu/entry[1]/@id)">
+              <link rel="stylesheet" type="text/css" href="{$workspace}/css/news.css" />
+            </xsl:when></xsl:choose>
 	</xsl:template>
 
         <xsl:template name="write-print-styles">
@@ -66,7 +70,7 @@
 					Galleria.loadTheme("<xsl:value-of select="$workspace"/>/galleria/themes/classic/galleria.classic.min.js");
 					//Galleria.DEBUG=false;
 					Galleria.configure({lightbox: true, autoplay: 5000, imageCrop: 'height'});
-					Galleria.run('#galleria');
+					Galleria.run('.galleria');
 					//Galleria.configure('debug',false);
 					});
 				  </script>
@@ -75,8 +79,10 @@
         				<script src="{$workspace}/js/jquery.js"/>
         				<script src="{$workspace}/js/scheme.js"/>
 				</xsl:when>
-
 			</xsl:choose>
+			<xsl:choose><xsl:when test="number(/data/news-page-by-1st-menu/entry[1]/@id)">
+			  <script src="{$workspace}/js/news.js"/>
+			</xsl:when></xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="write-body">
@@ -103,6 +109,21 @@
 									<div class="close_div"></div>
 								</div>
 								<div class="right_column">
+<xsl:variable name="en-link">
+  <xsl:call-template name="get-lang-link">
+    <xsl:with-param name="text" select="/data/params/current-path"/>
+    <xsl:with-param name="cur-lang" select="/data/params/url-language"/>
+    <xsl:with-param name="expected-lang">en</xsl:with-param>
+  </xsl:call-template>
+</xsl:variable>
+
+<xsl:variable name="ru-link">
+  <xsl:call-template name="get-lang-link">
+    <xsl:with-param name="text" select="/data/params/current-path"/>
+    <xsl:with-param name="cur-lang" select="/data/params/url-language"/>
+    <xsl:with-param name="expected-lang">ru</xsl:with-param>
+  </xsl:call-template>
+</xsl:variable>
 									<div style="float: left">
 										<div class="header_1st_line">
 											<xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text>
@@ -110,6 +131,8 @@
 
 									</div>
 									<img style="float: right; padding-top: 15px" src="/workspace/uploads/images/zil-logo.png" />
+									<div class="ruen_icon"><a href="{$en-link}" ><img src="/workspace/uploads/images/icon-en.png" /></a></div>
+									<div class="ruen_icon"><a href="{$ru-link}"><img src="/workspace/uploads/images/icon-ru.png" /></a></div>
 								</div>
 								<div style="clear:both"></div>
 							</div>
