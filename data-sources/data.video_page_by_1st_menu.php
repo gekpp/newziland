@@ -39,7 +39,7 @@
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-05T21:52:57+00:00'
+				'release-date' => '2013-03-05T22:44:29+00:00'
 			);
 		}
 

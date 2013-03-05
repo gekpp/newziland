@@ -246,8 +246,8 @@
 
   <!-- Заполнаяем страницу Видео -->
   <xsl:template name="fill-video-page" match="video-page-by-1st-menu">
-    <xsl:variable name="item-id" select="./@id" />
-    <xsl:variable name="video-item" select="/data/video-for-video-page/entry[@id=$item-id]"/>
+    <xsl:variable name="video-item-id" select="./entry/video/item/@id" />
+    <xsl:variable name="video-item" select="/data/video-for-video-page/entry[@id=$video-item-id]"/>
     <xsl:variable name="path-to-video">
         <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/flv-file/@path"/>/<xsl:value-of select="$video-item/flv-file/filename"/>        
     </xsl:variable>
@@ -261,15 +261,18 @@
         width="640" height="360" id="fp" align="middle">
         <param name="allowScriptAccess" value="sameDomain" />
         <param name="movie"
-          value="{$workspace}/video/fp.swf?video={$path-to-video}&image={$path-to-preview}&title=Мое видео" />
+          value='{$workspace}/video/fp.swf?video={$path-to-video}&amp;image={$path-to-preview}&amp;title=' />
         <param name="quality" value="high" />
         <param name="bgcolor" value="#ffffff" />
         <embed
-          src="{$workspace}/video/fp.swf?video={$path-to-video}&image={$path-to-preview}&title=Мое виде"
+          src="{$workspace}/video/fp.swf?video={$path-to-video}&amp;image={$path-to-preview}&amp;title="
           quality="high" bgcolor="#ffffff" width="640" height="360"
           name="fp" align="middle" allowScriptAccess="sameDomain"
           type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
       </object>
+    </div>
+    <div class="video-description">
+      <xsl:value-of select="./entry/content-text"/>
     </div>
   </xsl:template>
   <!-- Заполнаяем страницу Видео -->

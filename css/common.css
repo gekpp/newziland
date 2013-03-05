@@ -188,3 +188,12 @@ img {
 .ruen_icon img {
 	width: 25px;
 }
+
+#video { 
+	margin-left: 80px;
+}
+
+.video-description {
+	color: #0099cb;
+	margin: 20px 130px;
+}
