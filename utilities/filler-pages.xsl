@@ -259,16 +259,7 @@
       <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
         codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
         width="640" height="360" id="fp" align="middle">
-        <param name="allowScriptAccess" value="sameDomain" />
-        <param name="movie"
-          value="{$workspace}/video/fp.swf?video={$path-to-video}&image={$path-to-preview}&title=Мое видео" />
-        <param name="quality" value="high" />
-        <param name="bgcolor" value="#ffffff" />
-        <embed
-          src="{$workspace}/video/fp.swf?video={$path-to-video}&image={$path-to-preview}&title=Мое виде"
-          quality="high" bgcolor="#ffffff" width="640" height="360"
-          name="fp" align="middle" allowScriptAccess="sameDomain"
-          type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+        
       </object>
     </div>
   </xsl:template>
