@@ -51,6 +51,9 @@
         <xsl:when test="number(/data/news-page-by-1st-menu/entry/@id)">
           <xsl:apply-templates name="fill-news-page" select="/data/news-page-by-1st-menu"/>
         </xsl:when>
+        <xsl:when test="number(/data/video-page-by-1st-menu/entry/@id)">
+          <xsl:apply-templates name="fill-video-page" select="/data/video-page-by-1st-menu"/>
+        </xsl:when>
         <xsl:otherwise><xsl:text disable-output-escaping="yes"><![CDATA[&nbsp;]]></xsl:text></xsl:otherwise>
       </xsl:choose>
     </xsl:otherwise>
