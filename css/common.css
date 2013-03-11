@@ -204,3 +204,17 @@ img {
 	color: #0099cb;
 	margin: 20px 130px;
 }
+
+.hidden_banner_image {
+	display: none;
+}
+
+.showed_banner_image{
+	display: block;
+}
+
+#banner_slideshow {
+	width: 800px;
+	height: 313px;
+	margin-bottom: 15px;
+}

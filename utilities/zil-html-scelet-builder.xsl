@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:import href="navigation.xsl"/>
 <xsl:import href="string-utils.xsl"/>
 	<xsl:import href="content-filler.xsl" />
 
@@ -60,7 +61,21 @@
         </xsl:template>
 
 	<xsl:template name="write-scripts">
-			<xsl:choose>
+          <xsl:choose> <xsl:when test="'home'=$root-page">
+                         <script src="{$workspace}/js/jquery.js"/>
+                         <script src="{$workspace}/js/jquery.cycle.all.js"/>
+                         <script language="javascript">
+                           $(document).ready(function(){
+                             $('#banner_slideshow').cycle({
+	  		         fx: "fade",
+	  		         timeout: 6000,
+	  		         speed:    3000
+	  		       });
+	  		   });
+                         </script> 
+                       </xsl:when>
+          </xsl:choose>
+			<xsl:choose> 
 
 				<xsl:when test="number(/data/page-galery/entry/@id)">
         				<script src="{$workspace}/js/jquery.js"/>
