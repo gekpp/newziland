@@ -12,36 +12,17 @@
       select="/data/image-files/entry[@id=$main-banner-id]" />
     <xsl:variable name="main-videobanner-id" select="$page/videobanner/item/@id" />
     <xsl:variable name="main-videobanner" select="/data/video-for-home-page/entry[@id=$main-videobanner-id]"/>
-    <xsl:choose><xsl:when test="number($main-videobanner/@id)">
-      <xsl:variable name="poster"><xsl:value-of select="$workspace"/><xsl:value-of select="$main-videobanner/preview/@path"/>/<xsl:value-of select="$main-videobanner/preview/filename"/>
-      </xsl:variable>
-      <xsl:variable name="video"><xsl:value-of select="$workspace"/><xsl:value-of select="$main-videobanner/video-file/@path"/>/<xsl:value-of select="$main-videobanner/video-file/filename"/>
-      </xsl:variable>
-      <div id="home_videobanner">
-        <video poster="{$poster}" autoplay="autoplay" loop="loop" muted="muted" width="800">
-          
-          <xsl:choose><xsl:when test="string($main-videobanner/video-file/filename)">
-            <xsl:variable name="path-to-webm">
-              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$main-videobanner/video-file/@path"/>/<xsl:value-of select="$main-videobanner/video-file/filename"/>        
-            </xsl:variable>
-            <source type="video/mp4" src="{$path-to-webm}" /> 
-          </xsl:when></xsl:choose>
-
-          <xsl:choose><xsl:when test="string($main-videobanner/webm-file/filename)">
-            <xsl:variable name="path-to-webm">
-              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$main-videobanner/webm-file/@path"/>/<xsl:value-of select="$main-videobanner/webm-file/filename"/>        
-            </xsl:variable>
-            <source type="video/webm" src="{$path-to-webm}" /> 
-          </xsl:when></xsl:choose>
-
-         <xsl:choose><xsl:when test="string($main-videobanner/ogv-file/filename)">
-            <xsl:variable name="path-to-ogv">
-              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$main-videobanner/ogv-file/@path"/>/<xsl:value-of select="$main-videobanner/ogv-file/filename"/>        
-            </xsl:variable>
-            <source type="video/ogg" src="{$path-to-ogv}" /> 
-          </xsl:when></xsl:choose>
-
-        </video>
+    <xsl:choose><xsl:when test="count(/data/banner-images/entry)&gt;0">
+      <div id="banner_slideshow">
+        <xsl:for-each select="/data/banner-images/entry">
+          <xsl:variable name="banner_img_class_name">
+            <xsl:choose>
+              <xsl:when test="position()=1">showed_banner_image</xsl:when>
+              <xsl:otherwise>hidden_banner_image</xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <img class="{$banner_img_class_name}" src="{$workspace}/{./file/@path}/{./file/filename}"/>
+        </xsl:for-each>
       </div>
     </xsl:when>
     <xsl:otherwise>
