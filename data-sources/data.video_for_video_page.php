@@ -20,7 +20,9 @@
 		public $dsParamINCLUDEDELEMENTS = array(
 				'name',
 				'preview',
-				'flv-file'
+				'video-file',
+				'ogv-file',
+				'webm-file'
 		);
 
 
@@ -37,7 +39,7 @@
 					'website' => 'http://newziland-ru.1gb.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-05T21:54:51+00:00'
+				'release-date' => '2013-03-07T07:27:18+00:00'
 			);
 		}
 

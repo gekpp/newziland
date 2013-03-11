@@ -3,36 +3,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link type="text/css" href="../css/bottom.css" rel="stylesheet" />
-<link type="text/css" href="../css/jquery.fancybox.css" rel="stylesheet" />
-<script type="text/javascript"
-	src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
-<script type="text/javascript" src="../js/jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="../js/jquery.pikachoose.full.js"></script>
-<script type="text/javascript" src="../js/jquery.fancybox.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
 
 <script language="javascript">
-	$(document).ready(
-
-	function() {
-		var a = function(self) {
-			self.anchor.fancybox();
-		};
-		$("#pikame").PikaChoose({
-			buildFinished : a
+$(document).onready(function(){
+	$('#banner_slideshow').cycle({
+			fx: "fade",
+			timeout: 1000,
+			delay:  -1000,
+			sync: true
 		});
 	});
 </script>
+
 </head>
 <body>
-	<div class="pikachoose">
-		Basic example - without carousel
-		<ul id="pikame">
-			<li><a href="./1.jpg"><img src="./1.jpg" /></a></li>
-			<li><img src="./2.jpg" /></li>
-			<li><a href="http://www.pikachoose.com"><img src="./3.jpg" /></a></li>
-		</ul>
+	<div id="banner_slideshow">
+	    <img style="display: block" src="./1.jpg">
+	    <img style="display: none"  src="./2.jpg">
+	    <img style="display: none"  src="./3.jpg">
+	    <img style="display: none" src="./4.jpg">
+	    <img style="display: none" src="./5.jpg">
 	</div>
-
 </body>
 </html>

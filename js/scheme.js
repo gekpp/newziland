@@ -14,7 +14,10 @@ function pinclick(no) {
 					$(this).addClass("non_active_pin");
 				}
 			});
-	$(".scheme_pushpin.non_active_pin").fadeTo("slow",0.8);
+	$(".scheme_pushpin.non_active_pin").fadeTo("fast",0.0, function(){
+		$(".scheme_pushpin.non_active_pin").css("display","none");
+	});
+
 	$(".wr_scheme_item_title.non_active_pin").fadeTo("slow",0.6);
 	$("#scheme_entire_page_text").css("display","none");
 	$(".scheme_item_description.non_active_pin").css("opacity",0.0);
@@ -23,11 +26,13 @@ function pinclick(no) {
 		function(){
 		 $(".scheme_item_description.non_active_pin").css("display","none");
 		});
+	$(".scheme_item_description.active_pin").css("display","block");
 	$(".scheme_item_description.active_pin").fadeTo(300,1.0);
 	$(".scheme_item_description.active_pin").css("display","block");
 }
 
 function showAllPins(){
+	$(".scheme_pushpin").css("display","block");
 	$(".scheme_pushpin, .wr_scheme_item_title").fadeTo("slow",1.0);
 	$(".scheme_item_description").fadeTo(200,0.0);
 	$("#scheme_entire_page_text").css("opacity", 0);

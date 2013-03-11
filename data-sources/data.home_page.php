@@ -10,6 +10,7 @@
 		public $dsParamLIMIT = '20';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamREDIRECTONEMPTY = 'no';
+		public $dsParamPARAMOUTPUT = 'videobanner';
 		public $dsParamSORT = 'system:id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
@@ -20,7 +21,8 @@
 				'banner',
 				'description',
 				'left-column',
-				'right-column'
+				'right-column',
+				'videobanner'
 		);
 
 
@@ -34,10 +36,10 @@
 				'name' => 'home-page',
 				'author' => array(
 					'name' => 'Arkadiy Romanov',
-					'website' => 'http://newziland-ru.1gb.ru',
+					'website' => 'http://newziland.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-02-24T00:18:05+00:00'
+				'release-date' => '2013-03-07T01:28:37+00:00'
 			);
 		}
 

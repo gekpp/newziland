@@ -9,7 +9,19 @@
 <xsl:template name="fill-footer">
   <xsl:variable name="curlang" select="/data/params/url-language" />
     <ul class="bottom_menu menu">
-      <xsl:variable name="footer-menu-item-width" select="100 div count(/data/menu-1st/entry)" />
+      <xsl:variable name="footer-menu-item-width" select="100 div (count(/data/menu-1st/entry) + 1)" />
+      
+      <li class="bottom_menu_item fl" style="width:{$footer-menu-item-width}%">
+           <xsl:choose>
+             <xsl:when test="string($curlang)">
+               <a href="{$root}/{$url-language}/home"><span><xsl:value-of select="/data/ml-strings/entry[name='main']/value" /></span></a>
+             </xsl:when>
+             <xsl:otherwise>
+               <a href="{$root}/ru/home"><span><xsl:value-of select="/data/ml-strings/entry[name='main']/value" /></span></a>
+             </xsl:otherwise>
+           </xsl:choose>
+        </li>
+
       <xsl:for-each select="/data/menu-1st/entry">
         <xsl:variable name="backend-name" select="./backend-name/@handle"/>
         <li class="bottom_menu_item fl" style="width:{$footer-menu-item-width}%">
@@ -39,7 +51,7 @@
         <xsl:when test="number(/data/two-column-page-with-galery-right-by-2nd-menu/entry/@id)">     
           <xsl:apply-templates name="fill-page-two-collumn-with-galery" select="/data/two-column-page-with-galery-right-by-2nd-menu"/>
         </xsl:when>
-        <xsl:when test="number(/data/two-column-page-with-galery-right-by-1nd-menu/entry/@id)">
+        <xsl:when test="number(/data/two-column-page-with-galery-right-by-1st-menu/entry/@id)">
           <xsl:apply-templates name="fill-page-two-collumn-with-galery" select="/data/two-column-page-with-galery-right-by-1st-menu"/>
         </xsl:when>
         <xsl:when test="number(/data/contact-page-by-1st-menu/entry/@id)">

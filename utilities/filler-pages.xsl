@@ -10,13 +10,50 @@
     <xsl:variable name="main-banner-id" select="$page/banner/item/@id" />
     <xsl:variable name="main-banner-entity"
       select="/data/image-files/entry[@id=$main-banner-id]" />
-    <img id="banner_img"
-      src="{$workspace}/{$main-banner-entity/file/@path}/{$main-banner-entity/file/filename}" />
-    <div class="left_column">
-      <div class="left_column_text">
-        <xsl:value-of select="$page/left-column" />
+    <xsl:variable name="main-videobanner-id" select="$page/videobanner/item/@id" />
+    <xsl:variable name="main-videobanner" select="/data/video-for-home-page/entry[@id=$main-videobanner-id]"/>
+    <xsl:choose><xsl:when test="number($main-videobanner/@id)">
+      <xsl:variable name="poster"><xsl:value-of select="$workspace"/><xsl:value-of select="$main-videobanner/preview/@path"/>/<xsl:value-of select="$main-videobanner/preview/filename"/>
+      </xsl:variable>
+      <xsl:variable name="video"><xsl:value-of select="$workspace"/><xsl:value-of select="$main-videobanner/video-file/@path"/>/<xsl:value-of select="$main-videobanner/video-file/filename"/>
+      </xsl:variable>
+      <div id="home_videobanner">
+        <video poster="{$poster}" autoplay="autoplay" loop="loop" muted="muted" width="800">
+          
+          <xsl:choose><xsl:when test="string($main-videobanner/video-file/filename)">
+            <xsl:variable name="path-to-webm">
+              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$main-videobanner/video-file/@path"/>/<xsl:value-of select="$main-videobanner/video-file/filename"/>        
+            </xsl:variable>
+            <source type="video/mp4" src="{$path-to-webm}" /> 
+          </xsl:when></xsl:choose>
+
+          <xsl:choose><xsl:when test="string($main-videobanner/webm-file/filename)">
+            <xsl:variable name="path-to-webm">
+              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$main-videobanner/webm-file/@path"/>/<xsl:value-of select="$main-videobanner/webm-file/filename"/>        
+            </xsl:variable>
+            <source type="video/webm" src="{$path-to-webm}" /> 
+          </xsl:when></xsl:choose>
+
+         <xsl:choose><xsl:when test="string($main-videobanner/ogv-file/filename)">
+            <xsl:variable name="path-to-ogv">
+              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$main-videobanner/ogv-file/@path"/>/<xsl:value-of select="$main-videobanner/ogv-file/filename"/>        
+            </xsl:variable>
+            <source type="video/ogg" src="{$path-to-ogv}" /> 
+          </xsl:when></xsl:choose>
+
+        </video>
       </div>
-    </div>
+    </xsl:when>
+    <xsl:otherwise>
+      <img id="banner_img"
+        src="{$workspace}/{$main-banner-entity/file/@path}/{$main-banner-entity/file/filename}" />
+    </xsl:otherwise>
+    </xsl:choose>
+      <div class="left_column">
+        <div class="left_column_text">
+          <xsl:value-of select="$page/left-column" />
+        </div>
+      </div>
     <div class="right_column">
       <div class="right_column_text">
         <xsl:value-of select="$page/right-column" />
@@ -32,7 +69,10 @@
       <xsl:when test="number(./entry/@id)">
         <div class="left_column">
           <xsl:call-template name="second-menu-filler" />
-          <div class="delimiter"></div>
+          <xsl:choose><xsl:when test="count(//data/submenu-by-main-menu/entry) != 0">
+            <div class="delimiter"></div>          
+          </xsl:when></xsl:choose>
+          
           <div class="left_column_text">
             <xsl:value-of select="./entry/left-column" />
           </div>
@@ -246,33 +286,49 @@
 
   <!-- Заполнаяем страницу Видео -->
   <xsl:template name="fill-video-page" match="video-page-by-1st-menu">
+    <xsl:variable name="page" select="./entry"/>
     <xsl:variable name="video-item-id" select="./entry/video/item/@id" />
     <xsl:variable name="video-item" select="/data/video-for-video-page/entry[@id=$video-item-id]"/>
     <xsl:variable name="path-to-video">
-        <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/flv-file/@path"/>/<xsl:value-of select="$video-item/flv-file/filename"/>        
+        <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/video-file/@path"/>/<xsl:value-of select="$video-item/video-file/filename"/>        
     </xsl:variable>
     <xsl:variable name="path-to-preview">
         <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/preview/@path"/>/<xsl:value-of select="$video-item/preview/filename"/>        
     </xsl:variable>
     
     <div id="video">
-      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-        codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
-        width="640" height="360" id="fp" align="middle">
-        <param name="allowScriptAccess" value="sameDomain" />
-        <param name="movie"
-          value='{$workspace}/video/fp.swf?video={$path-to-video}&amp;image={$path-to-preview}&amp;title=' />
-        <param name="quality" value="high" />
-        <param name="bgcolor" value="#ffffff" />
-        <embed
-          src="{$workspace}/video/fp.swf?video={$path-to-video}&amp;image={$path-to-preview}&amp;title="
-          quality="high" bgcolor="#ffffff" width="640" height="360"
-          name="fp" align="middle" allowScriptAccess="sameDomain"
-          type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-      </object>
+      <div class="flowplayer no-background  play-button functional">
+        <video preload="auto"  poster="{$path-to-preview}">
+          <xsl:choose><xsl:when test="string($video-item/webm-file/filename)">
+            <xsl:variable name="path-to-webm">
+              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/webm-file/@path"/>/<xsl:value-of select="$video-item/webm-file/filename"/>        
+            </xsl:variable>
+            <source type="video/webm" src="{$path-to-webm}" /> 
+          </xsl:when></xsl:choose>
+
+          <source type="video/mp4" src="{$path-to-video}" />
+          
+
+         <xsl:choose><xsl:when test="string($video-item/ogv-file/filename)">
+            <xsl:variable name="path-to-ogv">
+              <xsl:value-of select="$workspace"/>/<xsl:value-of select="$video-item/ogv-file/@path"/>/<xsl:value-of select="$video-item/ogv-file/filename"/>        
+            </xsl:variable>
+            <source type="video/ogg" src="{$path-to-ogv}" /> 
+          </xsl:when></xsl:choose>
+          
+          <source type="video/flash" src="mp4:workspace/video/flvs/videozil.mp4"/>
+         </video>
+      </div>
     </div>
-    <div class="video-description">
-      <xsl:value-of select="./entry/content-text"/>
+    <div class="left_column">
+      <div class="left_column_text">
+        <xsl:value-of select="$page/left-column" />
+      </div>
+    </div>
+    <div class="right_column">
+      <div class="right_column_text">
+        <xsl:value-of select="$page/right-column" />
+      </div>
     </div>
   </xsl:template>
   <!-- Заполнаяем страницу Видео -->

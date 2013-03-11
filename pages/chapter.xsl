@@ -3,13 +3,11 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:import href="../utilities/zil-html-scelet-builder.xsl"/>
-
-<xsl:output method="xml"
-	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
-	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
-	omit-xml-declaration="yes"
-	encoding="UTF-8"
-	indent="yes" />
+<xsl:output
+     method="html"
+     doctype-system="about:legacy-compat"
+     encoding="UTF-8"
+     indent="yes" />
 
 <xsl:template match="/">
 	<xsl:call-template name="write-html-and-children"/>

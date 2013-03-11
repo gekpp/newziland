@@ -8,6 +8,7 @@
 	<xsl:template name="write-html-and-children">
 		<!-- <xsl:param name="title"/> <xsl:param name="keywords"/> <xsl:param 
 			name="description/> -->
+
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
 				<xsl:call-template name="write-title" />
@@ -40,7 +41,7 @@
 			type="text/css" media="screen, projection" />
 		<xsl:choose>
 			<xsl:when
-				test="('home'=$root-page) or number(/data/contact-page-by-1st-menu/entry/@id)">
+				test="('home'=$root-page) or number(/data/contact-page-by-1st-menu/entry/@id) or number(/data/video-page-by-1st-menu[1]/entry/@id)">
 				<link rel="stylesheet" href="{$workspace}/css/like_main_page.css"
 					type="text/css" media="screen, projection" />
 			</xsl:when>
@@ -67,7 +68,7 @@
 				  <script>
 					$(document).ready(function (){
 					//Galleria.
-					Galleria.loadTheme("<xsl:value-of select="$workspace"/>/galleria/themes/classic/galleria.classic.min.js");
+					Galleria.loadTheme("<xsl:value-of select="$workspace"/>/galleria/themes/classic/galleria.classic.min.js?"+Math.random());
 					//Galleria.DEBUG=false;
 					Galleria.configure({lightbox: true, autoplay: 5000, imageCrop: 'height'});
 					Galleria.run('.galleria');
@@ -83,6 +84,25 @@
 			<xsl:choose><xsl:when test="number(/data/news-page-by-1st-menu/entry[1]/@id)">
 			  <script src="{$workspace}/js/news.js"/>
 			</xsl:when></xsl:choose>
+			<xsl:choose><xsl:when test="number(/data/video-page-by-1st-menu/entry[1]/@id)">
+			  <script src="{$workspace}/js/jquery.min.js"/>
+			  <script src="{$workspace}/flowplayer/flowplayer.min.js"/>
+			  <link rel="stylesheet" type="text/css"    href="{$workspace}/flowplayer/skin/functional.css" />
+<script>
+   // global configuration (optional)
+   flowplayer.conf = {
+      rtmp: "rtmp://s3b78u0kbtx79q.cloudfront.net/cfx/st",
+      swf: "http://releases.flowplayer.org/5.3.2/flowplayer.swf"
+   };
+
+   // force flash with query - only for testing, do not use this switch in production!
+   if (/flash/.test(location.search)) flowplayer.conf.engine = "flash";
+
+</script>
+			</xsl:when></xsl:choose>
+
+
+
 	</xsl:template>
 
 	<xsl:template name="write-body">

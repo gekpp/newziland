@@ -190,7 +190,14 @@ img {
 }
 
 #video { 
-	margin-left: 80px;
+/*	margin-left: 80px;
+ */
+	margin-bottom: 15px;
+}
+
+.flowplayer {
+//	background: #0099cb;
+	height: 313px;
 }
 
 .video-description {

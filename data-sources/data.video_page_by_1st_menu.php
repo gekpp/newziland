@@ -22,7 +22,8 @@
 				'title',
 				'description',
 				'video',
-				'content-text'
+				'left-column',
+				'right-column'
 		);
 
 
@@ -36,10 +37,10 @@
 				'name' => 'video page by 1st menu',
 				'author' => array(
 					'name' => 'Arkadiy Romanov',
-					'website' => 'http://newziland-ru.1gb.ru',
+					'website' => 'http://newziland.ru',
 					'email' => 'arkadyrom@gmail.com'),
 				'version' => 'Symphony 2.2.5',
-				'release-date' => '2013-03-05T22:44:29+00:00'
+				'release-date' => '2013-03-07T00:37:28+00:00'
 			);
 		}
 
